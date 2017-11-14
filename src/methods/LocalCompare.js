@@ -14,6 +14,7 @@ export default class LocalCompare extends BaseCompare {
     this.getReferencefile = options.referenceName;
     this.getDiffFile = options.diffName;
     this.misMatchTolerance = _.get(options, 'misMatchTolerance', 0.01);
+    this.compareOptions = options.compare;
   }
 
   async afterScreenshot(context, base64Screenshot) {
@@ -62,17 +63,12 @@ export default class LocalCompare extends BaseCompare {
    * @param  {Buffer|string} screenshot path to file or buffer to compare with reference
    * @return {{misMatchPercentage: Number, isSameDimensions:Boolean, getImageDataUrl: function}}
    */
-  async compareImages(reference, screenshot, ignore = '') {
+  async compareImages(reference, screenshot) {
     return await new Promise((resolve) => {
       const image = resemble(reference).compareTo(screenshot);
 
-      switch(ignore) {
-        case 'colors':
-          image.ignoreColors();
-          break;
-        case 'antialiasing':
-          image.ignoreAntialiasing();
-          break;
+      if (this.compareOptions) {
+        image.ignore(this.compareOptions);
       }
 
       image.onComplete((data) => {
