@@ -2344,9 +2344,9 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-"node-resemble-js@github:moxionio/node-resemble.js":
+"node-resemble-js@github:moxionio/node-resemble.js#moxion":
   version "0.2.0"
-  resolved "https://codeload.github.com/moxionio/node-resemble.js/tar.gz/3094b09e28ea3eda85391c1da86ebe37e45cb2a2"
+  resolved "https://codeload.github.com/moxionio/node-resemble.js/tar.gz/ba1cd053bb1d0cb0ffe9288ca78d459d94ca777b"
   dependencies:
     jpeg-js "0.2.0"
     pngjs "~2.2.0"
